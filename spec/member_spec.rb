@@ -33,4 +33,19 @@ describe Member do
       expect{ member.return_item('book') }.to raise_error('Item has not been checked out!')
     end
   end
+
+    describe 'assign_book' do
+      it 'can assign book to anyone in the member list' do
+        member.assign_book(:book)
+        expect(member.checked_out_books).to include(:book)
+      end
+    end
+
+    describe 'return_book' do
+      it 'can return a book from anyone in the member list' do
+        member.return_book(:book)
+        expect(member.checked_out_books).not_to include(:book)
+      end
+    end
+
 end

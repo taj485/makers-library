@@ -1,7 +1,7 @@
 require 'member_list'
 
 describe MemberList do
-  subject(:list)      { described_class.new(member_class) }
+  let(:list)      { described_class.new(member_class) }
   let(:member_class)  { double(:member_class, :new => member) }
   let(:member)        { double(:member) }
 
@@ -23,6 +23,17 @@ describe MemberList do
 
   describe '#remove' do
     it 'removes a user from the list' do
+      list.add('12345', 'Bananaman')
+      list.remove('12345', 'Bananaman')
+      expect(list.members).not_to include('12345', 'Bananaman')
     end
   end
+
+  # describe 'view_members_by_ID' do
+  #   it 'can display member details by ID' do
+  #     list.add('12345', 'Bananaman')
+  #     expect(m.members.select(id)).to eq()
+  #   end
+  # end
+
 end
